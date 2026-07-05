@@ -691,34 +691,36 @@ export default function AdminDashboard() {
               </div>
             </div>
 
-            <div className="form-group">
-              <label className="form-label">Demo Video (.mp4 / .webm)</label>
-              <div style={{ display: "flex", gap: "1rem", alignItems: "center", marginTop: "0.5rem" }}>
-                <input
-                  type="file"
-                  accept="video/mp4,video/webm"
-                  onChange={handleVideoUpload}
-                  disabled={submitLoading || videoUploading}
-                  style={{ display: "none" }}
-                  id="video-upload-input"
-                />
-                <label
-                  htmlFor="video-upload-input"
-                  className="btn-secondary"
-                  style={{ cursor: "pointer", fontSize: "0.85rem", padding: "0.5rem 1rem" }}
-                >
-                  {videoUploading ? "Uploading..." : "Select Video File"}
-                </label>
-                {formVideoUrl ? (
-                  <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
-                    <span style={{ fontSize: "0.85rem", color: "var(--color-success)" }}>✓ Uploaded</span>
-                    <a href={formVideoUrl} target="_blank" rel="noopener noreferrer" style={{ fontSize: "0.8rem", color: "var(--text-secondary)", textDecoration: "underline" }}>View File</a>
-                  </div>
-                ) : (
-                  <span style={{ fontSize: "0.85rem", color: "var(--text-secondary)" }}>No video selected</span>
-                )}
+            {formFeatured && (
+              <div className="form-group">
+                <label className="form-label">Demo Video (.mp4 / .webm)</label>
+                <div style={{ display: "flex", gap: "1rem", alignItems: "center", marginTop: "0.5rem" }}>
+                  <input
+                    type="file"
+                    accept="video/mp4,video/webm"
+                    onChange={handleVideoUpload}
+                    disabled={submitLoading || videoUploading}
+                    style={{ display: "none" }}
+                    id="video-upload-input"
+                  />
+                  <label
+                    htmlFor="video-upload-input"
+                    className="btn-secondary"
+                    style={{ cursor: "pointer", fontSize: "0.85rem", padding: "0.5rem 1rem" }}
+                  >
+                    {videoUploading ? "Uploading..." : "Select Video File"}
+                  </label>
+                  {formVideoUrl ? (
+                    <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+                      <span style={{ fontSize: "0.85rem", color: "var(--color-success)" }}>✓ Uploaded</span>
+                      <a href={formVideoUrl} target="_blank" rel="noopener noreferrer" style={{ fontSize: "0.8rem", color: "var(--text-secondary)", textDecoration: "underline" }}>View File</a>
+                    </div>
+                  ) : (
+                    <span style={{ fontSize: "0.85rem", color: "var(--text-secondary)" }}>No video selected</span>
+                  )}
+                </div>
               </div>
-            </div>
+            )}
 
             <div className="form-group">
               <label className="form-label">GitHub URL</label>
