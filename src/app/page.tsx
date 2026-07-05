@@ -127,14 +127,6 @@ export default async function HomePage() {
                         playsInline
                         className="project-card-video"
                       />
-                    ) : featuredProject.thumbnailUrl ? (
-                      <Image
-                        src={featuredProject.thumbnailUrl}
-                        alt={featuredProject.title}
-                        fill
-                        style={{ objectFit: "cover" }}
-                        className="project-card-video"
-                      />
                     ) : (
                       <div
                         style={{
