@@ -23,7 +23,7 @@ export default async function HomePage() {
   const avatarUrl = await getAvatarUrl();
   const stats = getStats(projects);
   const socials = await getSocialLinks();
-  const hasSocials = socials.githubUrl || socials.twitterUrl || socials.linkedinUrl || socials.emailUrl;
+  const hasSocials = socials.githubUrl || socials.twitterUrl || socials.linkedinUrl || socials.telegramUrl;
 
   const featuredProject = projects.find((p) => p.featured) || projects[0];
   const otherProjects = projects.filter((p) => p.slug !== featuredProject?.slug);
@@ -353,11 +353,11 @@ export default async function HomePage() {
                       </svg>
                     </a>
                   )}
-                  {socials.emailUrl && (
-                    <a href={socials.emailUrl} className="social-icon-btn" aria-label="Email" style={{ width: "40px", height: "40px" }}>
+                  {socials.telegramUrl && (
+                    <a href={socials.telegramUrl} target="_blank" rel="noopener noreferrer" className="social-icon-btn" aria-label="Telegram" style={{ width: "40px", height: "40px" }}>
                       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ width: "18px", height: "18px" }}>
-                        <rect x="2" y="4" width="20" height="16" rx="2" />
-                        <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+                        <path d="M22 2L11 13" />
+                        <path d="M22 2l-7 20-4-9-9-4 20-7z" />
                       </svg>
                     </a>
                   )}
@@ -368,7 +368,7 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <Footer />
+      <Footer socials={socials} />
     </div>
   );
 }

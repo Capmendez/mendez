@@ -44,7 +44,7 @@ export default function AdminDashboard() {
   const [socialGithub, setSocialGithub] = useState("");
   const [socialTwitter, setSocialTwitter] = useState("");
   const [socialLinkedin, setSocialLinkedin] = useState("");
-  const [socialEmail, setSocialEmail] = useState("");
+  const [socialTelegram, setSocialTelegram] = useState("");
   const [socialLoading, setSocialLoading] = useState(false);
 
   // Form State
@@ -114,7 +114,7 @@ export default function AdminDashboard() {
       setSocialGithub(socials.githubUrl);
       setSocialTwitter(socials.twitterUrl);
       setSocialLinkedin(socials.linkedinUrl);
-      setSocialEmail(socials.emailUrl);
+      setSocialTelegram(socials.telegramUrl);
     } catch (err) {
       console.error(err);
     } finally {
@@ -135,7 +135,7 @@ export default function AdminDashboard() {
         githubUrl: socialGithub,
         twitterUrl: socialTwitter,
         linkedinUrl: socialLinkedin,
-        emailUrl: socialEmail,
+        telegramUrl: socialTelegram,
       });
       setMessage("Social links updated.");
       setTimeout(() => setMessage(""), 3000);
@@ -609,13 +609,13 @@ export default function AdminDashboard() {
             </div>
 
             <div className="form-group">
-              <label className="form-label" style={{ fontSize: "0.85rem" }}>Email (mailto:)</label>
+              <label className="form-label" style={{ fontSize: "0.85rem" }}>Telegram URL</label>
               <input
                 type="text"
                 className="form-input"
-                placeholder="mailto:..."
-                value={socialEmail}
-                onChange={(e) => setSocialEmail(e.target.value)}
+                placeholder="https://t.me/..."
+                value={socialTelegram}
+                onChange={(e) => setSocialTelegram(e.target.value)}
                 disabled={socialLoading}
               />
             </div>

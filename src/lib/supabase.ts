@@ -378,14 +378,14 @@ export interface SocialLinks {
   githubUrl: string;
   twitterUrl: string;
   linkedinUrl: string;
-  emailUrl: string;
+  telegramUrl: string;
 }
 
 const DEFAULT_SOCIAL_LINKS: SocialLinks = {
   githubUrl: "https://github.com/mendezbuilds",
   twitterUrl: "https://x.com/mendezbuilds",
   linkedinUrl: "https://linkedin.com/in/alex-mendez",
-  emailUrl: "mailto:mendez@builtbymendez.com",
+  telegramUrl: "https://t.me/mendezbuilds",
 };
 
 export async function getSocialLinks(): Promise<SocialLinks> {
@@ -399,7 +399,7 @@ export async function getSocialLinks(): Promise<SocialLinks> {
   try {
     const { data, error } = await supabase
       .from("site_settings")
-      .select("github_url, twitter_url, linkedin_url, email_url")
+      .select("github_url, twitter_url, linkedin_url, telegram_url")
       .eq("id", "singleton")
       .single();
       
@@ -412,7 +412,7 @@ export async function getSocialLinks(): Promise<SocialLinks> {
       githubUrl: data.github_url || "",
       twitterUrl: data.twitter_url || "",
       linkedinUrl: data.linkedin_url || "",
-      emailUrl: data.email_url || ""
+      telegramUrl: data.telegram_url || ""
     };
   } catch (err) {
     console.warn("Could not load social links. Falling back:", err);
@@ -438,7 +438,7 @@ export async function saveSocialLinks(links: SocialLinks): Promise<boolean> {
         github_url: links.githubUrl,
         twitter_url: links.twitterUrl,
         linkedin_url: links.linkedinUrl,
-        email_url: links.emailUrl,
+        telegram_url: links.telegramUrl,
         updated_at: new Date().toISOString() 
       })
       .eq("id", "singleton");
