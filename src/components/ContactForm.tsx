@@ -13,15 +13,23 @@ export default function ContactForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    // Simulate transmission delay
-    setTimeout(() => {
-      setLoading(false);
-      setStatus("success");
-      setName("");
-      setEmail("");
-      setSubject("");
-      setMessage("");
-    }, 1200);
+    
+    // Construct the mailto link
+    const mailtoLink = `mailto:capmendez078@gmail.com?subject=${encodeURIComponent(
+      subject || "New Inquiry from Portfolio"
+    )}&body=${encodeURIComponent(
+      `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
+    )}`;
+    
+    // Open the default email client
+    window.location.href = mailtoLink;
+
+    setLoading(false);
+    setStatus("success");
+    setName("");
+    setEmail("");
+    setSubject("");
+    setMessage("");
   };
 
   return (
